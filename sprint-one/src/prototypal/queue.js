@@ -6,7 +6,6 @@ var Queue = function() {
   instance.qSize = 0;
   instance.removed = 0;
   instance.storage = {};
-  _.extend(instance, queueMethods)
   return instance;
 };
 
