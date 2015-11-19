@@ -4,6 +4,7 @@ var Queue = function() {
 
   var instance = Object.create(queueMethods);
   instance.qSize = 0;
+  instance.removed = 0;
   instance.storage = {};
   _.extend(instance, queueMethods)
   return instance;
@@ -13,7 +14,7 @@ queueMethods = {};
 
 queueMethods.enqueue = function (value){
   this.qSize++;
-  this.storage[this.qSize] = value;
+  this.storage[this.qSize + this.removed] = value;
   return value;
 
 }
@@ -21,9 +22,10 @@ queueMethods.dequeue = function () {
   if(this.qSize <=0){
     return;
   }
-  var value = this.storage[this.qSize];
-  delete this.storage[this.qSize];
-  this.qSize--; 
+  this.removed++;
+  var value = this.storage[this.removed];
+  delete this.storage[this.removed];
+  this.qSize--;
   return value;
 }
 queueMethods.size = function (){
