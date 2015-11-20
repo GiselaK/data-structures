@@ -1,14 +1,14 @@
 var BinarySearchTree = function(value) {
-  var instance = Object.create(treeMethods);
+  var instance = Object.create(binaryTreeMethods);
   instance.value = value;
   instance.left = null;
   instance.right = null;
   return instance;
 };
 
-var treeMethods = {};
+var binaryTreeMethods = {};
 
-treeMethods.insert = function (value) {
+binaryTreeMethods.insert = function (value) {
   // recursively 
   var insertNode = BinarySearchTree(value);
 
@@ -33,7 +33,7 @@ treeMethods.insert = function (value) {
   testNode(this);
 };
 
-treeMethods.contains = function (target) {
+binaryTreeMethods.contains = function (target) {
   var found = false;
   var checkNode = function (node){
     if(target === node.value){
@@ -52,7 +52,7 @@ treeMethods.contains = function (target) {
   return found;
 };
 
-treeMethods.depthFirstLog = function (callback) {
+binaryTreeMethods.depthFirstLog = function (callback) {
   var runNode = function(node){
     callback(node.value);
     if (node.left) {
