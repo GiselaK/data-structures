@@ -6,13 +6,9 @@ var LinkedList = function () { // Linked List class
   list.addToTail = function (value) {
     var node = Node(value);
     if (!list.tail) {
-      // 1. empty list 
       list.head = node;
       list.tail = node;      
     } else {
-      // 2. populated list
-      // list objs current tails next property equals node(value)
-      // tail the node(value)
       this.tail.next = node;
       this.tail = node;      
     }
