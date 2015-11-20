@@ -14,7 +14,7 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  if(this._storage.indexOf(item) > -1){
+  if (this._storage.indexOf(item) > -1){
     return true;
   }
   return false;
