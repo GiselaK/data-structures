@@ -33,18 +33,19 @@ var LinkedList = function () { // Linked List class
   };
 
   list.contains = function (target) {
-    var checkNode = function  (node) {
-      if (node.value === target) {
+      if (this.value === target) {
         return true;
       }
-      else if (!node.next) {
+      else if (!this.next && !this.hasOwnProperty("head")) {
         return false;
       }
       else {
-        return checkNode(node.next);
+        if (this.head) {
+          return list.contains.call(this.head, target);
+        } else {
+          return list.contains.call(this.next, target);
+        }
       }
-    }
-    return checkNode(list.head);
   };
 
   return list;
