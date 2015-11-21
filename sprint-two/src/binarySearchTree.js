@@ -32,7 +32,29 @@ binaryTreeMethods.insert = function (value) {
 
   testNode(this);
 };
-
+// binaryTreeMethods.insert = function (value, node, repeat, insertNode) {
+//   // recursively 
+//   if(!repeat){
+//     insertNode = BinarySearchTree(value);
+//     node = this;
+//   }
+//     if (value < node.value){
+//       if (!node.left){
+//         node.left = insertNode;
+//       } else {
+//         this.insert(value, node.left, true,insertNode);
+//       }
+//     } else if (value > node.value){
+//       if (!node.right){
+//         node.right = insertNode;
+//       } else {
+//         this.insert(value, node.right, true, insertNode);
+//       }
+//     }
+//     if(!repeat){
+//       this.insert(value, this, true, insertNode)
+//     }
+// }
 binaryTreeMethods.contains = function (target) {
   var found = false;
   var checkNode = function (node){
