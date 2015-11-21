@@ -1,27 +1,25 @@
-var LinkedList = function() { // Linked List class
+var LinkedList = function () { // Linked List class
   var list = {}; // instance of LinkedList Class
   list.head = null; // instance property head equals null
   list.tail = null; // instance property head equals null
 
-  list.addToTail = function(value) {
+  list.addToTail = function (value) {
     var node = Node(value);
-    if(!list.tail){
-        // 1. empty list 
+    if (!list.tail) {
       list.head = node;
       list.tail = node;      
-    } else{
-        // 2. populated list
+    } else {
       this.tail.next = node;
       this.tail = node;      
     }
   };
 
   list.removeHead = function() {
-    if (!list.head){
+    if (!list.head) {
       return;
     }
     var value = list.head.value;
-    if(!list.head.next && list.head){
+    if (!list.head.next && list.head) {
       list.head = null
       list.tail = null;
     } else {
@@ -30,25 +28,26 @@ var LinkedList = function() { // Linked List class
     return value;
   };
 
-  list.contains = function(target) {
-    var checkNode = function  (node) {
-      if(node.value === target){
+  list.contains = function (target) {
+      if (this.value === target) {
         return true;
       }
-      else if(!node.next){
+      else if (!this.next && !this.hasOwnProperty("head")) {
         return false;
       }
       else {
-        return checkNode(node.next);
+        if (this.head) {
+          return list.contains.call(this.head, target);
+        } else {
+          return list.contains.call(this.next, target);
+        }
       }
-    }
-    return checkNode(list.head);
   };
 
   return list;
 };
 
-var Node = function(value) {
+var Node = function (value) {
   var node = {};
 
   node.value = value;

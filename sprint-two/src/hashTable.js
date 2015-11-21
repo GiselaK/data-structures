@@ -5,6 +5,7 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  this._count++;
   var index = getIndexBelowMaxForKey(k, this._limit);
   var tuple = [k, v];
   // get current array at index
@@ -57,6 +58,7 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
+  this._count--;
   var index = getIndexBelowMaxForKey(k, this._limit);
   // get current array at index
   var currentIndexArray = this._storage.get(index);
